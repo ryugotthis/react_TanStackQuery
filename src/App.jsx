@@ -1,6 +1,7 @@
 import './App.css';
 import Posts from './Posts';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 function App() {
   console.log('hello?');
@@ -13,6 +14,8 @@ function App() {
         <h1>Blog &apos;em Ipsum</h1>
         <Posts />
       </div>
+      {/* devtools는 provider 안 어디든 위치하면 됨 */}
+      <ReactQueryDevtools />
     </QueryClientProvider>
   );
 }

@@ -6,19 +6,22 @@ import { PostDetail } from './PostDetail';
 export default function Posts() {
   const [selectedPost, setSelectedPost] = useState(null);
 
-  const { data } = useQuery({
+  const { data, isLoading, isError, error } = useQuery({
     queryKey: ['posts'],
     queryFn: fetchPosts,
+    staleTime: 2000, // 2s
   });
 
   // if (!data) return <div />;
 
+  if (isLoading) return <h3>Loading...</h3>;
+  if (isError) return <h2>{error.message}</h2>;
   console.log(data?.[0].title);
 
   return (
     <>
       <ul>
-        {data?.map((post) => (
+        {data.map((post) => (
           <li
             key={post.id}
             className="post-title"
