@@ -15,6 +15,7 @@ export async function fetchComments(postId) {
 export async function deletePost(postId) {
   const response = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${postId}`,
+    //HTTP 요청 메서드를 지정하는 부분, default GET
     { method: 'DELETE' }
   );
   return response.json();
